@@ -65,6 +65,9 @@ export const useClawLinkStore = create<ClawLinkState>()(
         currentAgent: state.currentAgent,
         apiKey: state.apiKey,
         token: state.token,
+        autoReplyEnabled: state.autoReplyEnabled,
+        autoReplyMode: state.autoReplyMode,
+        sessionAutoReplyOverrides: state.sessionAutoReplyOverrides,
       }),
     }
   )
