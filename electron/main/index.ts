@@ -19,6 +19,7 @@ import { ensureClawLinkContext, repairClawLinkOnlyBootstrapFiles } from '../util
 import { autoInstallCliIfNeeded, generateCompletionCache, installCompletionToProfile } from '../utils/openclaw-cli';
 import { isQuitting, setQuitting } from './app-state';
 import { applyProxySettings } from './proxy';
+import { performUpgradeCleanupIfNeeded, clearSessionStorage } from '../utils/upgrade-cleanup';
 import { getSetting } from '../utils/store';
 import { ensureBuiltinSkillsInstalled } from '../utils/skill-config';
 import { startHostApiServer } from '../api/server';
@@ -154,6 +155,13 @@ async function initialize(): Promise<void> {
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}`
   );
+
+  // Force-clean all caches/settings when upgrading from a previous version.
+  // This prevents stale config (e.g. old server URLs) from persisting.
+  const didCleanup = performUpgradeCleanupIfNeeded();
+  if (didCleanup) {
+    await clearSessionStorage();
+  }
 
   // Warm up network optimization (non-blocking)
   void warmupNetworkOptimization();

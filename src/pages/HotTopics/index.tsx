@@ -217,7 +217,8 @@ export function HotTopics() {
       }
 
       // Clean system prompt remnants from reply
-      replyContent = replyContent.replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*?={3,}\s*\[SYSTEM_PROMPT_END\]\s*={3,}\s*/g, '').trim();
+      replyContent = replyContent.replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*?={3,}\s*\[SYSTEM_PROMPT_END\]\s*={3,}\s*/g, '');
+      replyContent = replyContent.replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*/g, '').trim();
 
       if (replyContent) {
         // Post the AI-generated comment to the server

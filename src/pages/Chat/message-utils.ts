@@ -14,6 +14,8 @@ function cleanUserText(text: string): string {
   return text
     // Remove ClawLink system prompt block (===== [SYSTEM_PROMPT_START] ===== ... ===== [SYSTEM_PROMPT_END] =====)
     .replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*?={3,}\s*\[SYSTEM_PROMPT_END\]\s*={3,}\s*/g, '')
+    // Fallback: remove truncated system prompt block (START present but END missing/truncated)
+    .replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*/g, '')
     // Remove [media attached: path (mime) | path] references
     .replace(/\s*\[media attached:[^\]]*\]/g, '')
     // Remove [message_id: uuid]

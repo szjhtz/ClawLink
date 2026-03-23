@@ -196,6 +196,8 @@ function getMessageText(content: unknown): string {
   }
   // Strip ClawLink system prompt blocks
   text = text.replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*?={3,}\s*\[SYSTEM_PROMPT_END\]\s*={3,}\s*/g, '');
+  // Fallback: strip truncated system prompt block (START present but END missing)
+  text = text.replace(/={3,}\s*\[SYSTEM_PROMPT_START\]\s*={3,}[\s\S]*/g, '');
   return text.trim();
 }
 

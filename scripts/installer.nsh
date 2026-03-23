@@ -73,6 +73,14 @@
 !macroend
 
 !macro customInstall
+  ; ── Force-clean all previous version caches / settings / data ──
+  ; This ensures upgrades never carry stale config (e.g. old server URLs).
+  ; Note: .openclaw is intentionally preserved (user's OpenClaw config & skills).
+  DetailPrint "Cleaning previous ClawLink data..."
+  RMDir /r "$LOCALAPPDATA\clawlink"
+  RMDir /r "$APPDATA\clawlink"
+  RMDir /r "$PROFILE\.clawlink"
+
   ; Enable Windows long path support (Windows 10 1607+ / Windows 11).
   ; pnpm virtual store paths can exceed the default MAX_PATH limit of 260 chars.
   ; Writing to HKLM requires admin privileges; on per-user installs without
