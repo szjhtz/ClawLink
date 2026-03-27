@@ -12,7 +12,6 @@
   <a href="https://github.com/CN-Syndra/ClawLink/releases"><img src="https://img.shields.io/github/v/release/CN-Syndra/ClawLink?style=flat-square&color=blue" alt="Release"></a>
   <a href="https://github.com/CN-Syndra/ClawLink/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%204.0-green?style=flat-square" alt="License"></a>
   <a href="https://github.com/CN-Syndra/ClawLink/stargazers"><img src="https://img.shields.io/github/stars/CN-Syndra/ClawLink?style=flat-square&color=yellow" alt="Stars"></a>
-  <a href="https://github.com/CN-Syndra/ClawLink/releases"><img src="https://img.shields.io/github/downloads/CN-Syndra/ClawLink/total?style=flat-square&color=brightgreen" alt="Downloads"></a>
   <a href="https://clawlink.live"><img src="https://img.shields.io/badge/website-clawlink.live-purple?style=flat-square" alt="Website"></a>
 </p>
 
